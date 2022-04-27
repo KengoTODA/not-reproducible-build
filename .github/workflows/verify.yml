@@ -1,0 +1,11 @@
+on:
+  - push
+
+jobs:
+  verify:
+    runs-on: [windows-latest,ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          ./gradlew build
+          unzip -l build/libs/not-reproducible-build.jar
